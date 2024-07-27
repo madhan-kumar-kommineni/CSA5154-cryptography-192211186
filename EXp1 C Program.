@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+
+void caesarCipher(char *text, int shift) {
+    for(int i = 0; text[i] != '\0'; ++i) {
+        char c = text[i];
+        
+        if(c >= 'a' && c <= 'z') {
+            c = c + shift;
+            if(c > 'z') c = c - 'z' + 'a' - 1;
+        } else if(c >= 'A' && c <= 'Z') {
+            c = c + shift;
+            if(c > 'Z') c = c - 'Z' + 'A' - 1;
+        }
+        
+        text[i] = c;
+    }
+}
+
+int main() {
+    char text[100];
+    int shift;
+
+    printf("Enter a message to encrypt: ");
+    gets(text);
+    printf("Enter shift value: ");
+    scanf("%d", &shift);
+
+    caesarCipher(text, shift);
+    printf("Encrypted message: %s\n", text);
+
+    return 0;
+}
