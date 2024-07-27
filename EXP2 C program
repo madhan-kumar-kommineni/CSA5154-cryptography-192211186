@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <string.h>
+
+void monoalphabeticCipher(char *text, char *key) {
+    char alphabet[26] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    for(int i = 0; text[i] != '\0'; ++i) {
+        for(int j = 0; j < 26; ++j) {
+            if(text[i] == alphabet[j]) {
+                text[i] = key[j];
+                break;
+            }
+        }
+    }
+}
+
+int main() {
+    char text[100], key[27];
+    
+    printf("Enter a message to encrypt: ");
+    gets(text);
+    printf("Enter substitution key: ");
+    gets(key);
+
+    monoalphabeticCipher(text, key);
+    printf("Encrypted message: %s\n", text);
+
+    return 0;
+}
